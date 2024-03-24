@@ -22,7 +22,7 @@ char *types_dysplay[2] = {"Shown", "Hidden"};
 int main(void)
 {
 
-    struct onscreen_box user_settings = {0, 1, 4, 0, 1, 3, 1};
+    struct onscreen_box user_settings = {0, +1, +4, 0, +1, +3, 1};
     printf("Your settings are:\nBox is %s\nThe fill color is %s\nBorder is %s\nThe border color is %s\nThe border style is%s\n",
            types_opacity[user_settings.opaque], types_colors[user_settings.f_color], types_dysplay[user_settings.dysplay], types_colors[user_settings.b_color], types_borders[user_settings.type_border]);
 
