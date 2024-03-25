@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <wchar.h>
 
 int main(int argc, char *argv[])
 {
@@ -53,6 +54,15 @@ lsstr: // x*2 -1
         goto lsstr;
     }
     printf("\n");
+
+    printf("size wchar_t %ld", sizeof(char));
+
+    printf("yuriy"),
+        printf("reshetov");
+
+    int counthouse = (100, 400);
+
+    printf("\n%d", counthouse);
 
     return 0;
 }
