@@ -8,7 +8,8 @@
 int main(int argc, char **argv)
 {
     char buf[256];
-    // char *ptrbuf = buf;
+    char *ptrbuf = buf;
+    size_t sizebufer = 256;
     char *namefile;
     int l;
     FILE *pf;
@@ -28,10 +29,9 @@ int main(int argc, char **argv)
         return -1;
     }
 
-    while (fgets(buf, sizeof(buf), pf))
+    while (getline(&ptrbuf, &sizebufer, pf) != -1)
     {
-
-        if (argc > 3) // Руско-английская проверка
+        if (argv[3] && strcmp(argv[3], "wc") == 0) // Руско-английская проверка
         {
             setlocale(LC_ALL, "ru_RU.UTF-8");
             wchar_t wbuf[256];
@@ -52,18 +52,17 @@ int main(int argc, char **argv)
         }
         else // English char 1 byte
         {
+
             if (strchr(buf, l))
             {
-                int i = 0;
-                while (buf[i] != '\n' && buf[i] != '\0')
-                {
-                    putc(buf[i], stdout);
-                    i++;
-                }
-                putc('\n', stdout);
+                fputs(buf, stdout);
             }
         }
     }
+    fclose(pf);
+    pf = NULL;
+
+    putc('\n', stdout);
 
     return 0;
 }
