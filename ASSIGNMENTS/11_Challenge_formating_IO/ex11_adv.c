@@ -6,8 +6,8 @@ _Bool isPrime(const int number)
     {
         return 0;
     }
-
-    for (int i = 3; i * i <= number; i += 2)
+    int mid = number / 2;
+    for (int i = 3; i <= mid; i += 2)
     {
         if (number % i == 0)
             return 0;
@@ -23,9 +23,17 @@ _Bool isEven(const int number)
 int main(int argc, char **argv)
 {
     //**************************** TEST SECTION *****************************************
-    int x = 27;
+    int x = 31;
+    int y = 30;
+    int z = 27;
+    printf("Start the test section\n");
     printf("%d is %s\n", x, isPrime(x) ? "prime" : isEven(x) ? "even"
                                                              : "odd");
+    printf("%d is %s\n", y, isPrime(y) ? "prime" : isEven(y) ? "even"
+                                                             : "odd");
+    printf("%d is %s\n", z, isPrime(z) ? "prime" : isEven(z) ? "even"
+                                                             : "odd");
+    printf("End of the test section\n");
     //**************************** END TEST SECTION *************************************
 
     FILE *pf, *pfw;
