@@ -2,7 +2,7 @@
 
 _Bool isPrime(const int number)
 {
-    if (number < 0 || number == 0 || number == 1 || number % 2 == 0)
+    if (number < 0 || number == 0 || number == 1 || (number & 1) == 0)
     {
         return 0;
     }
@@ -17,9 +17,7 @@ _Bool isPrime(const int number)
 
 _Bool isEven(const int number)
 {
-    if (number % 2 == 0)
-        return 1;
-    return 0;
+    return !(number & 1);
 }
 
 int main(int argc, char **argv)
