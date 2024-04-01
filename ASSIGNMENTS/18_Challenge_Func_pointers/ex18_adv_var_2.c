@@ -13,11 +13,11 @@ void printoption(void)
     return;
 }
 
-int (*func(int c))(int x, int y)
+extern int (*func(int c))(int x, int y)
 {
     if (c == 1)
     {
-        extern int fun1(int x, int y)
+        int fun1(int x, int y)
         {
             return x + y;
         }
@@ -25,7 +25,7 @@ int (*func(int c))(int x, int y)
     }
     if (c == 2)
     {
-        extern int fun1(int x, int y)
+        int fun1(int x, int y)
         {
             return x - y;
         }
@@ -33,7 +33,7 @@ int (*func(int c))(int x, int y)
     }
     if (c == 3)
     {
-        extern int fun1(int x, int y)
+        int fun1(int x, int y)
         {
             return x * y;
         }
@@ -41,13 +41,13 @@ int (*func(int c))(int x, int y)
     }
     if (c == 4)
     {
-        extern int fun1(int x, int y)
+        int fun1(int x, int y)
         {
             return x / y;
         }
         return fun1;
     }
-    extern int fun1(int x, int y)
+    int fun1(int x, int y)
     {
         return x + y;
     }
