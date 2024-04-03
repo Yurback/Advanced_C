@@ -20,16 +20,17 @@ int lengthOfString(char *source);
 /*
 str1 - string to concatenate to (resulting string)
 str2 - second string to concatenate from
+x - double pointer to the new str
 return type - int:0 on success
 */
-int strConcat(char *str1, char *str2);
+int strConcat(char *str1, char *str2, char **x);
 
 /*
 source - string to cope from
-destination - second string to copy to
+destination - double pointer for the second string to copy to
 return type - int:0 on success
 */
-int strCopy(char *source, char *destination);
+int strCopy(char *source, char **destination);
 
 /*
 source - source string

@@ -1,86 +1,43 @@
+#include <stdio.h>
 #include <malloc.h>
-
-int numberOfCharactersInString(char *str, char searchCharacter)
-{
-    int sum = 0;
-    while (*str != '\0')
-    {
-        if (*str == searchCharacter)
-            sum++;
-        str++;
-    }
-    return sum;
-}
-
-int removeNonAlphaCharacters(char *source)
-{
-    char *pt = NULL;
-    pt = source;
-    while (*source != '\0')
-    {
-        if ((*source >= 'a' && *source <= 'z') || (*source >= 'A' && *source <= 'Z'))
-        {
-            *pt = *source;
-            pt++;
-            source++;
-        }
-        else
-        {
-            source++;
-        }
-    }
-    *pt = '\0';
-    return 0;
-}
-
-int lengthOfString(char *source)
-{
-    int sum = 0;
-    while (*source != '\0')
-    {
-        sum++;
-        source++;
-    }
-    return sum + 1;
-}
-
-int strConcat(char *str1, char *str2, char **x)
-{
-    int size = lengthOfString(str1) + lengthOfString(str2);
-    printf("size is %d\n", size);
-    char *str = NULL; // Дополнительный указатель с ним начинаем работать, основную ссылку *x не трогаем(не смещаем)
-    *x = (char *)malloc(size);
-    str = *x;
-    while (*str1 != '\0')
-    {
-        *str = *str1;
-        str1++;
-        str++;
-    }
-    while (*str2 != '\0')
-    {
-        *str = *str2;
-        str2++;
-        str++;
-    }
-    *str = '\0';
-    return 0;
-}
+#include "StringFunctions.h"
 
 int main(void)
 {
-    char a[] = "Hello";
-    char b[] = "World123123123                   123123        Yura";
-    char *ppt = NULL;
+    char a[] = "Hello world Yura Hello world Hello world";
+    char b[] = "World";
+    char *pt = NULL;
+    int from = 12; // start index
+    int n = 3;     // length substring
 
-    // printf("Number of char is %d\n", numberOfCharactersInString(a, 'e')); // Test 1 pass V
+    printf("Number of char is %d\n", numberOfCharactersInString(a, 'o')); // Test 1 pass V
 
     // removeNonAlphaCharacters(a);
     // printf("String with remove char is %s\n", a); // Test 2 pass V
 
     // printf("Length of the string a is %d\n", lengthOfString(a)); // Test 3 pass V
 
-    // strConcat(a, b, &ppt);
-    // printf("Concatinating string of a and b is %s\n", removeNonAlphaCharacters(ppt) ? "NULL" : ppt); // Test 4 pass V
+    // strConcat(a, b, &pt);
+    // printf("Concatinating string of a and b is %s\n", removeNonAlphaCharacters(pt) ? "NULL" : pt); // Test 4 pass V
+
+    // strCopy(b, &pt);
+    // printf("Copy string: %s\n", pt);
+    // printf("adress of pt is %p\n", pt);
+    // printf("adress of b is %p\n", b);
+    // printf("Size of byte hello: %ld\n", malloc_usable_size(pt));
+    // free(pt);
+
+    // strCopy(a, &pt);
+    // printf("Copy string: %s\n", pt);
+    // printf("adress of pt is %p\n", pt);
+    // printf("adress of b is %p\n", a);
+    // printf("Size of byte hello: %ld\n", malloc_usable_size(pt));
+    // printf("Size of byte hello: %ld\n", sizeof(a));
+    // free(pt); // Test 5 pass V
+
+    // pt = malloc(n + 1);
+    // substring(a, from, n, pt);
+    // printf("Tht substring is %s\n", pt); // Test 6 pass V
+
     return 0;
 }
