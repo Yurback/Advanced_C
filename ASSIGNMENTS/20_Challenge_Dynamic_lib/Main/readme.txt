@@ -14,3 +14,7 @@ gcc -o main main.o -L ../D_lib/ -l _stringfunctions
 
 2+2.1 is able to do through 1 command
 gcc -g -Wall -I ../Lib/  main.c  ../D_lib/lib_stringfunctions.so -o main
+
+### 
+Если ./main не запускается нужно прописать в терминале
+export LD_LIBRARY_PATH=/home/yurback/C_projects/Advanced_C/ASSIGNMENTS/20_Challenge_Dynamic_lib/D_lib:$LD_LIBRARY_PATH
