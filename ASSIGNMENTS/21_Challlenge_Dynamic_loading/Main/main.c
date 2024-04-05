@@ -12,7 +12,7 @@ int main(void)
     int (*cpystr)(char *, char **) = NULL;
     int (*substr)(char *, int, int, char *) = NULL;
 
-    void *handle = dlopen("/home/yurback/C_projects/Advanced_C/ASSIGNMENTS/21_CHalllenge_Dynamic_loading/D_lib/lib_stringfunctions.so", RTLD_LAZY);
+    void *handle = dlopen("/home/yurback/C_projects/Advanced_C/ASSIGNMENTS/21_Challlenge_Dynamic_loading/D_lib/lib_stringfunctions.so", RTLD_LAZY);
     if (!handle)
     {
         fputs(dlerror(), stderr);
