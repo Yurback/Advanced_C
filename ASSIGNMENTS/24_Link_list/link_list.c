@@ -1,5 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+// Exmp for dynamic allocation 1 Gb memory fot the substructure
+struct test
+{
+    char *a;
+    int size;
+};
 
 typedef struct node
 {
@@ -21,14 +27,28 @@ typedef link_list *ptrlinklist;
 void displaylist(ptrlinklist ll);
 void dispaymenu(void);
 int appUP(ptrlinklist ll, int v);
-int appEND(ptrlinklist, int);
-int appTARG(ptrlinklist, int, int);
-int delPOS(ptrlinklist, int);
-int updPOS(ptrlinklist, int, int);
-int findUP(ptrlinklist, int);
+int appEND(ptrlinklist ll, int val);
+int appTARG(ptrlinklist ll, int val, int pos);
+int delPOS(ptrlinklist ll, int pos);
+int updPOS(ptrlinklist ll, int val, int pos);
+int findUP(ptrlinklist ll, int val);
+
+void freemem(struct test *inst)
+{
+    free(inst->a);
+    inst->a = NULL;
+    return;
+}
 
 int main(void)
 {
+    struct test new = {0};
+    new.a = (char *)malloc(3000000000);
+    for (int i = 0; i < 1000000000; i++)
+    {
+        new.a[i] = 'a';
+    }
+
     link_list Linked_list = {0};
     // Linked_list.head = (node_t){0};
     int choice = 0;
@@ -68,12 +88,14 @@ int main(void)
             int pos = findUP(&Linked_list, value);
             printf("Index of element is %d", pos);
             break;
+        case 11:
+            freemem(&new);
+            break;
         case 7:
             displaylist(&Linked_list);
             break;
         }
     }
-
     return 0;
 }
 
@@ -88,10 +110,8 @@ int appUP(ptrlinklist ll, int v)
     {
         if (ll->head.data == v) // value in head == newvalue
             return 0;
-
         ptrnode second = ll->head.next;
         ptrnode newNode = malloc(sizeof(node_t));
-
         if (second != NULL)
         {
             newNode->next = second;
@@ -132,7 +152,6 @@ int appEND(ptrlinklist ll, int v)
         }
         else
         {
-
             ll->tail.next->next = newNode;
             ll->tail.next = newNode;
             ll->tail.data = v;
@@ -157,7 +176,6 @@ int appTARG(ptrlinklist ll, int val, int pos)
         appEND(ll, val);
         return 1;
     }
-
     if (pos == 2)
     {
         if (ll->head.data == val || ll->head.next->data == val)
