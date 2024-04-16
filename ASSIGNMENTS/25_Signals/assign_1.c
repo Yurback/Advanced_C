@@ -37,7 +37,7 @@ void error(char *msg)
 
 int main()
 {
-    int arr[21] = {0};
+    int arr[101] = {0};
 
     void (*hdl)(int);
     void (*hd2)(int);
@@ -54,27 +54,31 @@ int main()
 
     while (1)
     {
-        alarm(10);
-        int a = rand() % 11;
-        int b = rand() % 11;
+        alarm(20);
+        int a = 1 + rand() % 20;
+        int b = 2;
+        while (a % b != 0)
+        {
+            a = 1 + rand() % 20;
+        }
 
         char txt[4];
 
-        if (arr[a + b] == 0)
+        if (arr[a / b] == 0)
         {
-            arr[a + b] = 1;
-            printf("\nWhat is %d plus %d: ", a, b);
+            arr[a / b] = 1;
+            printf("\nWhat is %d times %d: ", a, b);
             fgets(txt, 4, stdin);
 
             int answer = atoi(txt);
 
-            if (answer == a + b)
+            if (answer == a / b)
                 score++;
             else
                 printf("\nWrong! %s Score: %d\n", txt, score);
         }
 
-        if (score == 20)
+        if (score == 10)
         {
             printf("You win!");
             break;
