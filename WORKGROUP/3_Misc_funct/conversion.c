@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 
 // int atoi (char const *s);
@@ -8,7 +9,7 @@
 
 int main(void)
 {
-    char a[] = "      a00111.898   200dream";
+    char a[] = "      00111.898   200dream";
     int value = atoi(a);
     float value2 = atof(a);
     long value3 = atol(a);
@@ -28,7 +29,7 @@ int main(void)
     value5 = strtod(end, NULL);
     printf("Value5 = %lf\n", value5);
 
-    value6 = strtol(a, &ptr, 16);
+    value6 = strtol(a, &ptr, 10);
     printf("THe number (unsigned long integer) is %ld\n", value6);
     printf("String part is |%s\n", ptr);
 

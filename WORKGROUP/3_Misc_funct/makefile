@@ -1,4 +1,6 @@
 CFLAGS=-Wall -g
 
+all: conversion
+
 clean:
-	rm -f assert
+	rm -f conversion
