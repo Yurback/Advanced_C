@@ -2,7 +2,9 @@
 
 int main(void)
 {
-
+#ifdef __STDC_NO_VLA__
+    printf("Variable length array are not supported");
+#endif
     int elements = 0;
     printf("Please enter a number elements of the array\n");
     scanf("%d", &elements);
